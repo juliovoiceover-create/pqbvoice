@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PQBVoice.ca — Independent Honest Media | Parksville & Qualicum Beach</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:#0d0d0d; --white:#f9f7f3; --pure:#ffffff;
+    --orange:#FF5C00; --orange-pale:#fff4ee; --orange-mid:#ff7a2e;
+    --gray-100:#f3f1ed; --gray-200:#e6e3dc; --gray-400:#9e9b93;
+    --gray-600:#52504b; --ink:#1c1a17;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white);color:var(--ink);font-family:'Barlow',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;}
+
+  /* ── NAV ── */
+  nav{background:var(--black);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:300;border-bottom:2px solid #1a1a1a;}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.04em;text-decoration:none;line-height:1;display:flex;align-items:baseline;gap:0;}
+  .logo .pqb{color:var(--white);}
+  .logo .voice{color:var(--orange);}
+  .logo .ca{color:var(--white);background:#1a1a1a;padding:2px 6px;margin-left:2px;font-size:20px;}
+  .nav-center{display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .nav-tagline{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#666;}
+  .nav-links{display:flex;gap:22px;list-style:none;}
+  .nav-links a{color:#888;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:color .2s;}
+  .nav-links a:hover{color:var(--orange);}
+  .nav-cta{background:var(--orange)!important;color:var(--pure)!important;padding:7px 16px!important;letter-spacing:.1em!important;}
+  .nav-cta:hover{opacity:.85;}
+
+  /* ── TICKER ── */
+  .ticker{background:var(--orange);padding:6px 0;overflow:hidden;white-space:nowrap;}
+  .ticker-inner{display:inline-flex;animation:scroll 40s linear infinite;}
+  .ticker-inner:hover{animation-play-state:paused;}
+  .t-label{background:var(--black);color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:2px 12px;margin-right:24px;flex-shrink:0;}
+  .t-item{color:var(--pure);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;margin-right:48px;flex-shrink:0;}
+  .t-item::before{content:'●';margin-right:10px;opacity:.5;}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* ── HERO ── */
+  .hero{display:grid;grid-template-columns:55% 45%;min-height:560px;background:var(--pure);border-bottom:3px solid var(--black);}
+  .hero-left{padding:56px 48px 56px 56px;display:flex;flex-direction:column;justify-content:center;border-right:2px solid var(--gray-200);}
+  .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:'';width:28px;height:2px;background:var(--orange);display:block;}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,5.8vw,84px);line-height:.92;color:var(--black);letter-spacing:.02em;margin-bottom:20px;}
+  .hero h1 em{font-style:normal;color:var(--orange);}
+  .hero-sub{font-size:16px;color:var(--gray-600);line-height:1.65;max-width:440px;margin-bottom:28px;}
+  .hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+  .badge{background:var(--gray-100);font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-600);padding:4px 10px;border:1px solid var(--gray-200);}
+  .badge.hi{background:var(--orange);color:var(--pure);border-color:var(--orange);}
+  .badge.ai{background:var(--black);color:var(--orange);border-color:var(--black);}
+  .hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  .btn-dark{background:var(--black);color:var(--pure);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:13px 26px;text-decoration:none;transition:background .2s;display:inline-block;}
+  .btn-dark:hover{background:var(--orange);}
+  .btn-line{color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--black);padding-bottom:2px;transition:color .2s,border-color .2s;}
+  .btn-line:hover{color:var(--orange);border-color:var(--orange);}
+  .hero-right{background:var(--black);display:flex;flex-direction:column;justify-content:flex-end;padding:44px 48px;position:relative;overflow:hidden;}
+  .hero-right::before{content:'PQB';position:absolute;top:-20px;right:-20px;font-family:'Bebas Neue',sans-serif;font-size:240px;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;}
+  .feat-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .feat-label::before{content:'';width:18px;height:2px;background:var(--orange);}
+  .feat-series{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#444;margin-bottom:8px;}
+  .hero-right h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,3.8vw,54px);line-height:1;color:var(--white);margin-bottom:12px;}
+  .feat-excerpt{font-size:14px;color:#999;line-height:1.55;margin-bottom:24px;max-width:320px;}
+  .feat-link{color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--orange);padding-bottom:2px;display:inline-block;transition:opacity .2s;}
+  .feat-link:hover{opacity:.7;}
+
+  /* ── AI BANNER ── */
+  .ai-banner{background:var(--black);border-top:1px solid #1a1a1a;border-bottom:3px solid var(--orange);padding:20px 56px;display:flex;align-items:center;gap:24px;justify-content:space-between;}
+  .ai-left{display:flex;align-items:center;gap:20px;}
+  .ai-pill{background:var(--orange);color:var(--pure);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.05em;padding:6px 14px;flex-shrink:0;}
+  .ai-text{font-size:14px;color:#aaa;line-height:1.45;max-width:600px;}
+  .ai-text strong{color:var(--white);font-weight:600;}
+  .ai-right{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#444;text-align:right;flex-shrink:0;}
+
+  /* ── SECTION SHELL ── */
+  .wrap{padding:64px 56px;}
+  .wrap.gray{background:var(--gray-100);}
+  .wrap.white{background:var(--pure);}
+  .wrap.dark{background:var(--black);}
+  .wrap.orange-bg{background:var(--orange);}
+  .wrap.slim{padding:48px 56px;}
+  .sec-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-400);display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+  .sec-label::after{content:'';flex:1;height:1px;background:var(--gray-200);}
+  .sec-label.lt{color:#3a3a3a;}
+  .sec-label.lt::after{background:#2a2a2a;}
+
+  /* ── NEWS ── */
+  .news-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--gray-200);}
+  .nc{background:var(--pure);padding:26px 26px 36px;text-decoration:none;color:inherit;position:relative;transition:background .15s;display:block;}
+  .nc:hover{background:var(--orange-pale);}
+  .nc.lead{grid-column:span 2;}
+  .nc-tag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;}
+  .nc-hed{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--black);line-height:1.1;margin-bottom:8px;}
+  .nc.lead .nc-hed{font-size:28px;}
+  .nc-dek{font-size:13px;color:var(--gray-600);line-height:1.5;margin-bottom:12px;}
+  .nc-meta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);}
+  .nc-src{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);margin-top:4px;opacity:.7;}
+  .nc-arr{position:absolute;bottom:18px;right:20px;color:var(--gray-200);font-size:16px;transition:color .2s,transform .2s;}
+  .nc:hover .nc-arr{color:var(--orange);transform:translateX(3px);}
+
+  /* ── SHOWS ── */
+  .shows-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gray-200);}
+  .sc{background:var(--pure);padding:30px 26px 42px;text-decoration:none;color:inherit;position:relative;transition:background .15s;display:block;}
+  .sc:hover{background:var(--orange-pale);}
+  .sc-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--gray-200);line-height:1;margin-bottom:12px;}
+  .sc-tag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;}
+  .sc-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--black);line-height:1.05;margin-bottom:8px;}
+  .sc-desc{font-size:13px;color:var(--gray-600);line-height:1.55;}
+  .sc-arr{position:absolute;bottom:18px;right:20px;color:var(--gray-200);font-size:16px;transition:color .2s,transform .2s;}
+  .sc:hover .sc-arr{color:var(--orange);transform:translateX(3px);}
+
+  /* ── EPISODES ── */
+  .ep-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .ec{background:var(--pure);border:1px solid var(--gray-200);padding:26px;display:flex;gap:18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s;}
+  .ec:hover{border-color:var(--orange);box-shadow:4px 4px 0 var(--orange-pale);}
+  .ec-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gray-200);line-height:1;flex-shrink:0;width:44px;}
+  .ec-show{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;}
+  .ec-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--black);line-height:1.15;margin-bottom:8px;}
+  .ec-dek{font-size:13px;color:var(--gray-600);line-height:1.5;margin-bottom:12px;}
+  .ec-meta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);display:flex;gap:12px;flex-wrap:wrap;}
+  .ec-soon{color:var(--orange)!important;}
+
+  /* ── PODCASTING ── */
+  .pod-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--gray-200);}
+  .pc{background:var(--pure);padding:36px 32px;}
+  .pc-icon{font-size:30px;margin-bottom:12px;}
+  .pc-tag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pure);background:var(--orange);padding:3px 10px;display:inline-block;margin-bottom:12px;}
+  .pc-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--black);margin-bottom:10px;}
+  .pc-desc{font-size:14px;color:var(--gray-600);line-height:1.65;margin-bottom:18px;}
+  .pc-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;}
+  .pc-list li{font-size:13px;color:var(--gray-600);display:flex;gap:8px;line-height:1.45;}
+  .pc-list li::before{content:'→';color:var(--orange);flex-shrink:0;}
+  .pc-cta{display:inline-block;background:var(--black);color:var(--pure);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;text-decoration:none;transition:background .2s;}
+  .pc-cta:hover{background:var(--orange);}
+
+  /* ── NEWSLETTER ── */
+  .nl-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .nl-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+  .nl-hed{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,4.5vw,68px);color:var(--white);line-height:.9;letter-spacing:.02em;margin-bottom:16px;}
+  .nl-hed em{font-style:normal;color:var(--orange);}
+  .nl-desc{font-size:15px;color:#777;line-height:1.65;margin-bottom:12px;}
+  .nl-free{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);}
+  .nl-box{background:var(--pure);border-top:4px solid var(--orange);}
+  .nl-bh{padding:16px 20px 12px;border-bottom:1px solid var(--gray-200);}
+  .nl-blabel{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;}
+  .nl-bsubj{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--black);line-height:1.1;}
+  .nl-stories{padding:16px 20px;display:flex;flex-direction:column;}
+  .nl-story{padding:9px 0;border-bottom:1px solid var(--gray-200);display:flex;gap:10px;}
+  .nl-story:last-child{border-bottom:none;}
+  .nl-dot{width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0;margin-top:7px;}
+  .nl-txt{font-size:12px;color:var(--ink);line-height:1.45;}
+  .nl-txt strong{font-weight:600;display:block;}
+
+  /* ── SIGNUP FORM ── */
+  .signup-form{padding:16px 20px 20px;background:var(--gray-100);border-top:1px solid var(--gray-200);}
+  .signup-form input[type="text"],
+  .signup-form input[type="email"]{width:100%;padding:10px 13px;border:2px solid var(--gray-200);font-family:'Barlow',sans-serif;font-size:13px;background:var(--pure);color:var(--ink);outline:none;margin-bottom:8px;}
+  .signup-form input:focus{border-color:var(--black);}
+  .signup-form button{width:100%;background:var(--black);color:var(--pure);border:none;padding:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+  .signup-form button:hover{background:var(--orange);}
+  .signup-note{font-size:11px;color:#888;text-align:center;margin-top:8px;font-style:italic;}
+
+  /* ── FRAUD ── */
+  .fraud-wrap{display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;}
+  .fraud-glyph{font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(0,0,0,.13);line-height:1;}
+  .fraud-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:7px;}
+  .fraud-hed{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.2vw,46px);color:var(--pure);line-height:.93;margin-bottom:9px;}
+  .fraud-dek{font-size:14px;color:rgba(255,255,255,.82);line-height:1.5;max-width:460px;}
+  .fraud-btn{background:var(--black);color:var(--pure);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:15px 26px;text-decoration:none;white-space:nowrap;transition:background .2s;}
+  .fraud-btn:hover{background:#111;}
+
+  /* ── MERCH ── */
+  .merch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--gray-200);}
+  .mc{background:var(--pure);padding:30px 22px 26px;text-align:center;transition:background .15s;}
+  .mc:hover{background:var(--orange-pale);}
+  .mc-icon{font-size:40px;margin-bottom:12px;}
+  .mc-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--black);margin-bottom:5px;}
+  .mc-desc{font-size:12px;color:var(--gray-600);line-height:1.5;margin-bottom:12px;}
+  .mc-price{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--orange);margin-bottom:12px;text-transform:uppercase;}
+  .mc-btn{display:inline-block;background:var(--black);color:var(--pure);font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;text-decoration:none;transition:background .2s;}
+  .mc-btn:hover{background:var(--orange);}
+
+  /* ── EVENTS ── */
+  .events-inner{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;}
+  .ev-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,3vw,44px);color:var(--white);line-height:.93;margin-bottom:8px;}
+  .ev-title em{font-style:normal;color:var(--orange);}
+  .ev-sub{font-size:13px;color:#555;line-height:1.55;}
+  .ev-list{display:flex;flex-direction:column;gap:0;}
+  .ev-item{padding:14px 0;border-bottom:1px solid #1a1a1a;display:flex;gap:20px;align-items:flex-start;}
+  .ev-item:last-child{border-bottom:none;}
+  .ev-date{font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--orange);letter-spacing:.05em;width:80px;flex-shrink:0;padding-top:2px;}
+  .ev-detail{font-size:13px;color:#888;line-height:1.45;}
+  .ev-detail strong{color:var(--white);display:block;font-size:14px;font-weight:600;margin-bottom:2px;}
+
+  /* ── ABOUT / AI ── */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+  .about-pull{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,4.2vw,60px);line-height:.92;color:var(--black);letter-spacing:.02em;}
+  .about-pull em{font-style:normal;color:var(--orange);}
+  .about-text{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:16px;}
+  .ai-card{background:var(--black);padding:22px 24px;border-left:4px solid var(--orange);margin-top:8px;}
+  .ai-card-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;}
+  .ai-card p{font-size:13px;color:#999;line-height:1.6;}
+  .ai-card strong{color:var(--white);}
+
+  /* ── STATS BAR ── */
+  .stats-bar{background:var(--black);border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:32px 56px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .stat{text-align:center;padding:0 16px;}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--orange);line-height:1;display:block;}
+  .stat-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#555;}
+
+  /* ── FOOTER ── */
+  footer{background:var(--black);padding:48px 56px 28px;}
+  .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:36px;border-bottom:1px solid #1a1a1a;margin-bottom:24px;}
+  .f-logo{display:block;margin-bottom:10px;}
+  .f-tag{font-size:12px;color:#444;line-height:1.6;max-width:190px;}
+  .f-col-lbl{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#333;margin-bottom:12px;}
+  .f-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .f-links a{color:#666;text-decoration:none;font-size:13px;transition:color .2s;}
+  .f-links a:hover{color:var(--orange);}
+  .f-contact p{font-size:12px;color:#444;margin-bottom:7px;line-height:1.5;}
+  .f-contact a{color:var(--orange);text-decoration:none;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+  .f-copy{font-size:11px;color:#2e2e2e;font-family:'Barlow Condensed',sans-serif;letter-spacing:.05em;}
+  .f-mission{font-size:11px;color:#2e2e2e;font-style:italic;}
+
+  /* ── MODAL ── */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--pure);width:100%;max-width:520px;border-top:4px solid var(--orange);padding:40px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+  .modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--gray-400);}
+  .modal-close:hover{color:var(--black);}
+  .modal h3{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--black);margin-bottom:6px;}
+  .modal p{font-size:14px;color:var(--gray-600);margin-bottom:20px;line-height:1.55;}
+  .modal input{width:100%;padding:11px 13px;border:2px solid var(--gray-200);font-family:'Barlow',sans-serif;font-size:14px;margin-bottom:10px;outline:none;}
+  .modal input:focus{border-color:var(--black);}
+  .modal button{width:100%;background:var(--black);color:var(--pure);border:none;padding:13px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+  .modal button:hover{background:var(--orange);}
+  .modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:10px;font-style:italic;}
+  .modal-success{display:none;text-align:center;padding:20px 0;}
+  .modal-success .ms-icon{font-size:48px;margin-bottom:12px;}
+  .modal-success h4{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--black);margin-bottom:8px;}
+  .modal-success p{font-size:14px;color:var(--gray-600);}
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .hero-left>*{animation:fadeUp .55s ease both;}
+  .eyebrow{animation-delay:.08s}.hero h1{animation-delay:.18s}.hero-sub{animation-delay:.28s}.hero-badges{animation-delay:.34s}.hero-actions{animation-delay:.4s}
+
+  /* ── MOBILE ── */
+  @media(max-width:900px){
+    nav{padding:0 18px;}.nav-center{display:none;}.nav-links{display:none;}
+    .hero{grid-template-columns:1fr;}.hero-left{padding:36px 22px;}.hero-right{padding:30px 22px;min-height:260px;}
+    .wrap{padding:44px 22px;}
+    .news-grid,.shows-grid,.pod-grid,.merch-grid{grid-template-columns:1fr;gap:1px;}
+    .nc.lead{grid-column:span 1;}
+    .ep-grid{grid-template-columns:1fr;}
+    .nl-wrap{grid-template-columns:1fr;gap:32px;}
+    .fraud-wrap{grid-template-columns:1fr;gap:20px;}.fraud-glyph{display:none;}
+    .about-grid{grid-template-columns:1fr;gap:28px;}
+    .footer-top{grid-template-columns:1fr;gap:24px;}
+    .footer-bottom{flex-direction:column;gap:6px;text-align:center;}
+    .events-inner{grid-template-columns:1fr;gap:20px;}
+    .stats-bar{grid-template-columns:1fr 1fr;gap:1px;}
+    .ai-banner{flex-direction:column;gap:12px;padding:18px 22px;}
+    .merch-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NEWSLETTER MODAL -->
+<div class="modal-overlay" id="nlModal">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('nlModal').classList.remove('open')">✕</button>
+    <div id="modal-form-area">
+      <h3>The PQB Briefing</h3>
+      <p>Free weekly local news, episode alerts, fraud warnings, and community stories — delivered every Monday. No spam. Ever.</p>
+      <input type="text" id="modal-name" placeholder="Your first name">
+      <input type="email" id="modal-email" placeholder="your@email.com">
+      <button onclick="submitNewsletter()">Subscribe Free →</button>
+      <p class="modal-note">100% free. Unsubscribe anytime. We will never sell your information.</p>
+    </div>
+    <div class="modal-success" id="modal-success">
+      <div class="ms-icon">✅</div>
+      <h4>You're In.</h4>
+      <p>Welcome to the PQB Briefing. Your first issue lands Monday.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo"><span class="pqb">PQB</span><span class="voice">VOICE</span><span class="ca">.CA</span></a>
+  <div class="nav-center">
+    <div class="nav-tagline">Independent, Honest Media</div>
+    <ul class="nav-links">
+      <li><a href="#news">News</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#podcasting">Podcasting</a></li>
+      <li><a href="#fraud-files">Fraud Files</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#" onclick="openModal(event)" class="nav-cta">Free Newsletter</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="t-label">Now</span>
+    <span class="t-item">Oceanside RCMP: $29K lost to scams in one week — crypto, fake bank calls, remote access fraud</span>
+    <span class="t-item">Qualicum Beach commits to new pickleball courts — club needs to raise $125,000</span>
+    <span class="t-item">Next Generation 911 approved for Parksville, QB &amp; Lantzville — text &amp; video 911 coming</span>
+    <span class="t-item">Qualicum Commons stays open another year after society declines sublease</span>
+    <span class="t-item">New ep: Bonny Belanger of Parksville Tech on why seniors are the #1 cybercrime target</span>
+    <span class="t-item">Send tips to tips@pqbvoice.ca — your story matters</span>
+    <span class="t-label">Now</span>
+    <span class="t-item">Oceanside RCMP: $29K lost to scams in one week — crypto, fake bank calls, remote access fraud</span>
+    <span class="t-item">Qualicum Beach commits to new pickleball courts — club needs to raise $125,000</span>
+    <span class="t-item">Next Generation 911 approved for Parksville, QB &amp; Lantzville — text &amp; video 911 coming</span>
+    <span class="t-item">Qualicum Commons stays open another year after society declines sublease</span>
+    <span class="t-item">New ep: Bonny Belanger of Parksville Tech on why seniors are the #1 cybercrime target</span>
+    <span class="t-item">Send tips to tips@pqbvoice.ca — your story matters</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Parksville &amp; Qualicum Beach, BC</div>
+    <h1>The Voice<br>This Town<br><em>Deserves.</em></h1>
+    <p class="hero-sub">Independent local media covering Parksville and Qualicum Beach — honest journalism, real conversations, and zero tolerance for the stories that keep getting buried.</p>
+    <div class="hero-badges">
+      <span class="badge hi">100% Free</span>
+      <span class="badge">Independent</span>
+      <span class="badge">Oceanside, BC</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#shows" class="btn-dark">Watch Episodes</a>
+      <a href="#" onclick="openModal(event)" class="btn-line">Free Newsletter →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="feat-label">Latest Investigation</div>
+    <div class="feat-series">The Oceanside Fraud Files · No. 001</div>
+    <h2>The Finholm<br>Fake-Out</h2>
+    <p class="feat-excerpt">A real house on a real Parksville street was used as bait in a rental scam. Here's how the con works — and why we're not letting it go.</p>
+    <a href="pqbvoice-scam-article-1.html" class="feat-link">Read the Investigation →</a>
+  </div>
+</section>
+
+<!-- PILLARS BAR -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-num" style="font-size:28px;padding-top:6px;">LOCAL</span><span class="stat-label">Parksville &amp; Qualicum Beach</span></div>
+  <div class="stat"><span class="stat-num" style="font-size:28px;padding-top:6px;">HONEST</span><span class="stat-label">No corporate owners. No agenda.</span></div>
+  <div class="stat"><span class="stat-num" style="font-size:28px;padding-top:6px;">FREE</span><span class="stat-label">Always free to read</span></div>
+  <div class="stat"><span class="stat-num" style="font-size:28px;padding-top:6px;">YOURS</span><span class="stat-label">Community-driven coverage</span></div>
+</div>
+
+<!-- LOCAL NEWS -->
+<section class="wrap white" id="news">
+  <div class="sec-label">This Week in Parksville &amp; Qualicum Beach</div>
+  <div class="news-grid">
+
+    <a href="article-scams-2026.html" class="nc lead">
+      <div class="nc-tag">Crime &amp; Safety · PQBVoice Investigation</div>
+      <div class="nc-hed">Three Local Families Lose $29,000 to Phone and Crypto Scams in One Week</div>
+      <p class="nc-dek">A cryptocurrency scheme on social media, a fake credit card company granting remote computer access, and a fraudulent bank call — all hitting Oceanside residents in the same seven days. Oceanside RCMP confirmed 284 complaints in that single week. Here's what you need to know to protect yourself and your family.</p>
+      <div class="nc-meta">June 1, 2026 · Parksville</div>
+      <span class="nc-arr">→</span>
+    </a>
+
+    <a href="article-pickleball.html" class="nc">
+      <div class="nc-tag">Community · Qualicum Beach</div>
+      <div class="nc-hed">Qualicum Beach's Pickleball Dream Has a Price Tag — and the Club Has to Find Half of It</div>
+      <p class="nc-dek">Four dedicated courts near the Airport Road dog park. A $250,000 price tag. A club that's raised $70,000 and is now racing to find another $125,000 before a key funding portal closes. This is the full story behind QB's most contested sporting debate.</p>
+      <div class="nc-meta">June 4, 2026 · Qualicum Beach</div>
+      <span class="nc-arr">→</span>
+    </a>
+
+    <a href="article-ng911.html" class="nc">
+      <div class="nc-tag">Infrastructure · Parksville · Qualicum Beach</div>
+      <div class="nc-hed">911 Is About to Change in Parksville and Qualicum Beach. Here's What That Means for You.</div>
+      <p class="nc-dek">The Regional District of Nanaimo just approved Next Generation 911 for our area. Soon you'll be able to text, send photos, and stream video directly to emergency dispatchers. No more hoping you can speak clearly enough under pressure.</p>
+      <div class="nc-meta">June 2, 2026 · Regional</div>
+      <span class="nc-arr">→</span>
+    </a>
+
+    <a href="article-scams-2026.html" class="nc">
+      <div class="nc-tag">Crime &amp; Safety · Ongoing</div>
+      <div class="nc-hed">Romance Scams. Crypto Schemes. Fake Banks. Parksville Is Being Hit From Every Direction.</div>
+      <p class="nc-dek">In one recent week alone, Oceanside RCMP logged 284 complaints and three residents lost nearly $29,000. Over the past six months, the losses have topped six figures. PQBVoice.ca has been tracking every reported incident — and the pattern is clear.</p>
+      <div class="nc-meta">June 1, 2026 · Parksville</div>
+      <span class="nc-arr">→</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- SHOWS -->
+<section class="wrap gray" id="shows">
+  <div class="sec-label">Our Shows</div>
+  <div class="shows-grid">
+    <a href="#episodes" class="sc">
+      <div class="sc-num">01</div>
+      <div class="sc-tag">Interview Series</div>
+      <div class="sc-name">The Grateful Immigrant with Julio Garcia</div>
+      <p class="sc-desc">Long-form conversations with the people shaping Parksville and Qualicum Beach. Honest, unscripted, and free from corporate talking points.</p>
+      <span class="sc-arr">→</span>
+    </a>
+    <a href="pqbvoice-scam-article-1.html" class="sc">
+      <div class="sc-num">02</div>
+      <div class="sc-tag">Investigative Series</div>
+      <div class="sc-name">The Oceanside Fraud Files</div>
+      <p class="sc-desc">Documenting and naming the scams targeting Parksville and Qualicum Beach families. Every story published makes the next victim harder to create.</p>
+      <span class="sc-arr">→</span>
+    </a>
+    <a href="#podcasting" class="sc">
+      <div class="sc-num">03</div>
+      <div class="sc-tag">Coming Soon</div>
+      <div class="sc-name">PQBVoice Talks</div>
+      <p class="sc-desc">Housing, City Hall, local business, and the conversations everyone's having at the coffee shop — finally getting the coverage they deserve.</p>
+      <span class="sc-arr">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- EPISODES -->
+<section class="wrap white" id="episodes">
+  <div class="sec-label">Latest Episodes — The Grateful Immigrant</div>
+  <div class="ep-grid">
+    <a href="article-bonny-belanger.html" class="ec">
+      <div class="ec-num">01</div>
+      <div>
+        <div class="ec-show">The Grateful Immigrant</div>
+        <div class="ec-title">Bonny Belanger: Keeping Oceanside Safe Online</div>
+        <p class="ec-dek">Parksville Tech founder Bonny Belanger on why seniors are the #1 cybercrime target right now — and what she's doing about it, one kitchen table at a time.</p>
+        <div class="ec-meta"><span>Parksville Tech</span><span>Cybersecurity</span><span class="ec-soon">▶ Watch Now</span></div>
+      </div>
+    </a>
+    <a href="article-raquel-molina.html" class="ec">
+      <div class="ec-num">02</div>
+      <div>
+        <div class="ec-show">The Grateful Immigrant</div>
+        <div class="ec-title">Raquel Molina: The Face of Homelessness Nobody Wants to See</div>
+        <p class="ec-dek">The VP of the Mana Homeless Society on who's really sleeping rough in Parksville, why the numbers keep climbing, and what this community can actually do.</p>
+        <div class="ec-meta"><span>Mana Homeless Society</span><span>Housing Crisis</span><span class="ec-soon">▶ Watch Now</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- PODCASTING -->
+<section class="wrap gray" id="podcasting">
+  <div class="sec-label">Work With Us</div>
+  <div class="pod-grid">
+    <div class="pc">
+      <div class="pc-icon">🎙️</div>
+      <span class="pc-tag">Always Free to Apply</span>
+      <div class="pc-title">Want to Be Featured?</div>
+      <p class="pc-desc">If you have something genuinely worth saying — a local business with a real story, a community issue that needs a platform, an event that deserves attention — we want to hear from you. We don't do puff pieces. We do real conversations that serve this community.</p>
+      <ul class="pc-list">
+        <li>Local business owners and founders with a real story</li>
+        <li>Community advocates, organizers, and leaders</li>
+        <li>Anyone with expertise that directly serves Oceanside residents</li>
+        <li>Event organizers and cause-driven initiatives</li>
+      </ul>
+      <a href="mailto:julio@pqbvoice.ca?subject=I want to be featured on PQBVoice" class="pc-cta">Pitch Your Story →</a>
+    </div>
+    <div class="pc">
+      <div class="pc-icon">🎚️</div>
+      <span class="pc-tag">Partnerships Welcome</span>
+      <div class="pc-title">Documentary Series &amp; Brand Podcasts</div>
+      <p class="pc-desc">We partner with local businesses, organizations, and causes to produce branded podcast series and documentary-style content. Every partnership starts from the same place: <strong>does this serve the community?</strong> If the answer is yes, we can build something together — shared revenue, joint ventures, or sponsorship models. We always start free and build from there.</p>
+      <ul class="pc-list">
+        <li>Branded documentary series for local organizations</li>
+        <li>Sponsored content that's editorially honest</li>
+        <li>Joint ventures and shared revenue arrangements</li>
+        <li>Community event coverage and live recordings</li>
+      </ul>
+      <a href="mailto:julio@pqbvoice.ca?subject=Partnership Inquiry - PQBVoice" class="pc-cta">Start the Conversation →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="wrap dark" id="newsletter">
+  <div class="nl-wrap">
+    <div>
+      <div class="nl-eyebrow">Weekly · Every Monday · Always Free</div>
+      <h2 class="nl-hed">The PQB<br><em>Briefing.</em></h2>
+      <p class="nl-desc">What's actually happening in Parksville and Qualicum Beach. Local news, new episodes, fraud warnings, community events, and the stories nobody else is writing — in your inbox every Monday morning.</p>
+      <p class="nl-free">✓ Free forever &nbsp;·&nbsp; No spam &nbsp;·&nbsp; Unsubscribe anytime</p>
+    </div>
+    <div>
+      <div class="nl-box">
+        <div class="nl-bh">
+          <div class="nl-blabel">Sample Edition</div>
+          <div class="nl-bsubj">The PQB Briefing — Vol. 1: Scams, City Hall &amp; New Voices</div>
+        </div>
+        <div class="nl-stories">
+          <div class="nl-story"><div class="nl-dot"></div><div class="nl-txt"><strong>Fraud Alert</strong>Three Oceanside residents lose $29K in seven days. The scam playbook, explained.</div></div>
+          <div class="nl-story"><div class="nl-dot"></div><div class="nl-txt"><strong>New Episode</strong>Bonny Belanger of Parksville Tech on cybercrime targeting seniors — out this week.</div></div>
+          <div class="nl-story"><div class="nl-dot"></div><div class="nl-txt"><strong>City Hall</strong>Qualicum Commons avoids closure — but the clock is ticking on a real solution.</div></div>
+          <div class="nl-story"><div class="nl-dot"></div><div class="nl-txt"><strong>Community</strong>Pickleball courts approved for QB. Club now has to raise $125K. Here's how to help.</div></div>
+        </div>
+        <div class="signup-form">
+          <input type="text" id="nl-name" placeholder="Your first name">
+          <input type="email" id="nl-email" placeholder="your@email.com">
+          <button onclick="submitInlineNewsletter()">Subscribe Free →</button>
+          <p class="signup-note" id="nl-confirm" style="display:none;color:var(--orange);font-style:normal;font-weight:600;">✓ You're subscribed. See you Monday.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAUD FILES -->
+<section class="wrap orange-bg slim" id="fraud-files">
+  <div class="fraud-wrap">
+    <div class="fraud-glyph">!</div>
+    <div>
+      <div class="fraud-label">Ongoing Investigative Series</div>
+      <h2 class="fraud-hed">The Oceanside<br>Fraud Files</h2>
+      <p class="fraud-dek">Parksville is not a soft target. If you've been hit by a rental scam, a fake contractor, a phone fraudster, or anything else — send us names, screenshots, and amounts. We investigate. We publish. We put it on record.</p>
+    </div>
+    <a href="mailto:tips@pqbvoice.ca?subject=Fraud Files Tip" class="fraud-btn">Submit a Tip →</a>
+  </div>
+</section>
+
+<!-- MERCH -->
+<section class="wrap gray" id="merch">
+  <div class="sec-label">PQBVoice Merch — Wear the Brand</div>
+  <div class="merch-grid">
+    <div class="mc">
+      <div class="mc-icon">🧢</div>
+      <div class="mc-name">Snapback Cap</div>
+      <p class="mc-desc">Black structured cap, orange PQBVoice.ca logo. Limited first run.</p>
+      <div class="mc-price">Notify Me — Coming Soon</div>
+      <a href="mailto:julio@pqbvoice.ca?subject=Merch - Snapback Cap" class="mc-btn">Get Notified</a>
+    </div>
+    <div class="mc">
+      <div class="mc-icon">🤠</div>
+      <div class="mc-name">Cowboy Hat</div>
+      <p class="mc-desc">Because Oceanside has its own kind of swagger. PQB branded, very limited.</p>
+      <div class="mc-price">Notify Me — Coming Soon</div>
+      <a href="mailto:julio@pqbvoice.ca?subject=Merch - Cowboy Hat" class="mc-btn">Get Notified</a>
+    </div>
+    <div class="mc">
+      <div class="mc-icon">👕</div>
+      <div class="mc-name">Classic Tee</div>
+      <p class="mc-desc">Black tee, clean orange logo, 100% cotton. Representing PQB.</p>
+      <div class="mc-price">Notify Me — Coming Soon</div>
+      <a href="mailto:julio@pqbvoice.ca?subject=Merch - Classic Tee" class="mc-btn">Get Notified</a>
+    </div>
+    <div class="mc">
+      <div class="mc-icon">🧥</div>
+      <div class="mc-name">Heavyweight Hoodie</div>
+      <p class="mc-desc">Pullover, PQBVoice.ca chest logo. Built for Oceanside mornings.</p>
+      <div class="mc-price">Notify Me — Coming Soon</div>
+      <a href="mailto:julio@pqbvoice.ca?subject=Merch - Hoodie" class="mc-btn">Get Notified</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<div class="wrap dark slim" id="events">
+  <div class="events-inner">
+    <div>
+      <h2 class="ev-title">Live<br><em>Events.</em></h2>
+      <p class="ev-sub">Free community events tied to our coverage and the stories that matter. Everyone welcome.</p>
+    </div>
+    <div class="ev-list">
+      <div class="ev-item">
+        <div class="ev-date">Fall 2026</div>
+        <div class="ev-detail"><strong>PQBVoice Community Forum — Parksville, BC</strong>A live event bringing together local voices on housing, safety, and what this community actually needs. Free to attend. Details to be announced — subscribe to the newsletter to be first to know.</div>
+      </div>
+      <div class="ev-item">
+        <div class="ev-date">Summer 2026</div>
+        <div class="ev-detail"><strong>Live Podcast Recording — The Grateful Immigrant</strong>Watch a live episode of PQBVoice's flagship interview show recorded in front of a Parksville audience. Guest TBA. Free admission. Subscribe for details.</div>
+      </div>
+      <div class="ev-item">
+        <div class="ev-date">Ongoing</div>
+        <div class="ev-detail"><strong>Have an Event Worth Covering?</strong>If something is happening in Parksville or Qualicum Beach that this community needs to know about, send it to <a href="mailto:tips@pqbvoice.ca" style="color:var(--orange);">tips@pqbvoice.ca</a> and we'll consider covering it.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="wrap white" id="about">
+  <div class="about-grid">
+    <div class="about-pull">Built here.<br>For here.<br><em>By people<br>who give<br>a damn.</em></div>
+    <div>
+      <p class="about-text">PQBVoice.ca is an independent media outlet covering Parksville and Qualicum Beach — built on the belief that honest local journalism should be free, fearless, and rooted in the community it serves. We cover the stories that matter to the people who actually live here.</p>
+      <p class="about-text">We're not a corporate chain. We don't have advertisers telling us what to bury. We report on what this community needs to know — local issues, local voices, and the stories that too often get ignored because they're inconvenient for someone with a budget.</p>
+      <div class="ai-card" style="background:var(--gray-100);border-left:4px solid var(--orange);padding:22px 24px;margin-top:8px;">
+        <div class="ai-card-label" style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Got a story?</div>
+        <p style="font-size:13px;color:var(--gray-600);line-height:1.6;">If something is happening in Parksville or Qualicum Beach that the community needs to know about, we want to hear from you. Tips, leads, whistleblowers, witnesses — all welcome. <strong style="color:var(--ink);">tips@pqbvoice.ca</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="logo f-logo"><span class="pqb">PQB</span><span class="voice">VOICE</span><span class="ca">.CA</span></a>
+      <p class="f-tag">Independent honest media for Parksville &amp; Qualicum Beach, Vancouver Island, BC.</p>
+    </div>
+    <div>
+      <div class="f-col-lbl">Sections</div>
+      <ul class="f-links">
+        <li><a href="#news">Local News</a></li>
+        <li><a href="#shows">Shows</a></li>
+        <li><a href="#episodes">Episodes</a></li>
+        <li><a href="#fraud-files">Fraud Files</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-lbl">More</div>
+      <ul class="f-links">
+        <li><a href="#podcasting">Work With Us</a></li>
+        <li><a href="#newsletter">Free Newsletter</a></li>
+        <li><a href="#merch">Merch</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div class="f-contact">
+      <div class="f-col-lbl">Contact</div>
+      <p>Tips &amp; Story Leads:<br><a href="mailto:tips@pqbvoice.ca">tips@pqbvoice.ca</a></p>
+      <p>General Inquiries:<br><a href="mailto:julio@pqbvoice.ca">julio@pqbvoice.ca</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="f-copy">© 2026 PQBVoice.ca · Parksville, BC · All rights reserved</div>
+    <div class="f-mission">PQBVoice.ca is a Local Voices Network publication · Independent. Honest. Unapologetic.</div>
+  </div>
+</footer>
+
+<script>
+  function openModal(e) {
+    e.preventDefault();
+    document.getElementById('nlModal').classList.add('open');
+    document.getElementById('modal-email').focus();
+  }
+  document.getElementById('nlModal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+  function submitNewsletter() {
+    const name = document.getElementById('modal-name').value.trim();
+    const email = document.getElementById('modal-email').value.trim();
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    document.getElementById('modal-form-area').style.display = 'none';
+    document.getElementById('modal-success').style.display = 'block';
+    // Wire to your email/MailChimp/Beehiiv here
+  }
+  function submitInlineNewsletter() {
+    const name = document.getElementById('nl-name').value.trim();
+    const email = document.getElementById('nl-email').value.trim();
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    document.getElementById('nl-confirm').style.display = 'block';
+    document.getElementById('nl-name').style.display = 'none';
+    document.getElementById('nl-email').style.display = 'none';
+    // Wire to your email/MailChimp/Beehiiv here
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.getElementById('nlModal').classList.remove('open');
+  });
+</script>
+</body>
+</html>
